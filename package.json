@@ -1,0 +1,22 @@
+{
+  "name": "ragstack-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "chmod +x build.sh && ./build.sh",
+    "build:frontend": "cd frontend && npm install && npm run build && cd .. && mkdir -p backend/public && cp -r frontend/dist/* backend/public/",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "cd backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}
